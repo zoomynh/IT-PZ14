@@ -1,0 +1,252 @@
+/* --- Скидання стилів та базові налаштування --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Кольорова палітра, що відповідає темі (синій - мережа, білий/світлий - чистота/зрозумілість) */
+    --primary-color: #007BFF;
+    /* Синій для акцентів */
+    --secondary-color: #28A745;
+    /* Зелений для успіху/кнопок */
+    --text-color: #343A40;
+    /* Темний текст */
+    --background-color: #F8F9FA;
+    /* Світло-сірий фон */
+    --card-bg-color: #FFFFFF;
+    /* Білий фон для карточок */
+    --hover-bg-color: #0056b3;
+    /* Темніший синій для ефекту */
+}
+
+/* --- Основний фоновий стиль та шрифти --- */
+body {
+    font-family: 'Arial', sans-serif;
+    /* Підібраний шрифт */
+    color: var(--text-color);
+    background-color: var(--background-color);
+    /* Основний фоновий колір */
+    line-height: 1.6;
+}
+
+/* --- Стилізований контейнер --- */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    /* Вирівнювання та відступи */
+    padding: 0 20px;
+}
+
+/* --- Заголовок та Навігаційне меню --- */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Стилізоване меню навігації з ефектом наведення */
+.nav-menu a:hover {
+    background-color: var(--hover-bg-color);
+}
+
+/* --- Оформлені кнопки з ефектами наведення (:hover) --- */
+.styled-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.styled-button:hover {
+    background-color: #1e7e34;
+    /* Трохи темніший зелений */
+    transform: translateY(-2px);
+}
+
+/* --- Основні секції --- */
+section {
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.info-block,
+.extended-info {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Оформлені карточки елементів та адаптована сітка (Галерея) --- */
+.card-grid {
+    text-align: center;
+    margin-top: 25px;
+    /* Додайте відступ зверху, якщо потрібно */
+    display: flex;
+    /* Змінюємо на Flexbox */
+    flex-wrap: wrap;
+    /* Дозволяємо карткам переноситися на новий рядок */
+    justify-content: center;
+    /* Вирівнюємо картки по центру */
+    gap: 20px;
+    /* Відстань між картками */
+}
+
+.card-grid h2 {
+    /* Цей заголовок ми тепер виносимо окремо, щоб він не був частиною flex-контейнера */
+    text-align: left;
+    /* Або center, залежно від бажаного вирівнювання */
+    margin-bottom: 25px;
+    width: 100%;
+    /* Займає всю ширину */
+}
+
+/* Переконаємося, що h2 не впливає на flex-контейнер, якщо він був всередині.
+   В нашій HTML структурі h2 є окремим елементом в секції card-grid, що вже добре.
+   Просто переконаємося, що він не є безпосереднім flex-елементом. */
+
+
+.card {
+    background-color: var(--card-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    text-align: left;
+    flex: 0 1 calc(33.333% - 20px);
+    /* Три картки в ряд з врахуванням gap */
+    min-width: 280px;
+    /* Мінімальна ширина картки для адаптивності */
+    max-width: 350px;
+    /* Максимальна ширина картки */
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 1 calc(50% - 20px);
+        /* Дві картки в ряд на середніх екранах */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 0 1 100%;
+        /* Одна картка в ряд на маленьких екранах */
+    }
+}
+
+/* --- Форма --- */
+.subscription-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--card-bg-color);
+}
+
+.subscription-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.subscription-form input[type="email"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* --- FAQ Секція (для JS) --- */
+.faq-section {
+    padding: 40px 0;
+}
+
+.faq-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background-color: var(--card-bg-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #e9ecef;
+}
+
+.faq-answer {
+    padding: 0 15px;
+    background-color: #f8f8f8;
+    max-height: 0;
+    /* Використовується JS для розкриття/закриття */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-answer p {
+    padding: 15px 0;
+}
+
+/* Клас для активного стану, додається через JS */
+.faq-answer.active {
+    max-height: 200px;
+    /* Достатньо велике значення для вмісту */
+    padding: 15px;
+}
+
+/* --- Нижній колонтитул (Footer) --- */
+.footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    margin-top: 30px;
+}
